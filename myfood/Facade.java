@@ -2,11 +2,15 @@ package myfood;
 
 import myfood.framework.database.Storage;
 import myfood.services.CriarEmpresa;
+import myfood.services.CriarProduto;
 import myfood.services.CriarUsuario;
+import myfood.services.EditarProduto;
 import myfood.services.GetAtributoEmpresa;
 import myfood.services.GetAtributoUsuario;
 import myfood.services.GetEmpresasDoUsuario;
 import myfood.services.GetIdEmpresa;
+import myfood.services.GetProduto;
+import myfood.services.ListarProdutos;
 import myfood.services.Login;
 
 public class Facade {
@@ -48,6 +52,22 @@ public class Facade {
 
     public String getIdEmpresa(String idDono, String nomeEmpresa, String indice) {
         return GetIdEmpresa.run(idDono, nomeEmpresa, indice);
+    }
+
+    public String criarProduto(String empresa, String nome, String valor, String categoria) {
+        return CriarProduto.run(empresa, nome, valor, categoria);
+    }
+
+    public void editarProduto(String produto, String nome, String valor, String categoria) {
+        EditarProduto.run(produto, nome, valor, categoria);
+    }
+
+    public String getProduto(String nome, String empresa, String atributo) {
+        return GetProduto.run(nome, empresa, atributo);
+    }
+
+    public String listarProdutos(String empresa) {
+        return ListarProdutos.run(empresa);
     }
 }
 
