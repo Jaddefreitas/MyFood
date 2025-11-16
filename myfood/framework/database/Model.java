@@ -47,6 +47,11 @@ public abstract class Model<T extends Properties> extends Properties {
         storage.write(tableName, this);
     }
 
+    public void delete() {
+        String tableName = table();
+        storage.delete(tableName, this.getProperty("id"));
+    }
+
     public T findBy(String property, String value) {
         String tableName = table();
         for (Properties record : storage.read(tableName)) {
@@ -64,6 +69,15 @@ public abstract class Model<T extends Properties> extends Properties {
             if (record.getProperty(property).equals(value)) {
                 results.add(fromProperties(record));
             }
+        }
+        return results;
+    }
+
+    public List<T> all() {
+        List<T> results = new ArrayList<>();
+        String tableName = table();
+        for (Properties record : storage.read(tableName)) {
+            results.add(fromProperties(record));
         }
         return results;
     }

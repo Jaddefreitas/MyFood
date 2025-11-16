@@ -1,17 +1,23 @@
 package myfood;
 
 import myfood.framework.database.Storage;
+import myfood.services.AdicionarProduto;
 import myfood.services.CriarEmpresa;
+import myfood.services.CriarPedido;
 import myfood.services.CriarProduto;
 import myfood.services.CriarUsuario;
 import myfood.services.EditarProduto;
+import myfood.services.FecharPedido;
 import myfood.services.GetAtributoEmpresa;
 import myfood.services.GetAtributoUsuario;
 import myfood.services.GetEmpresasDoUsuario;
 import myfood.services.GetIdEmpresa;
+import myfood.services.GetNumeroPedido;
+import myfood.services.GetPedidos;
 import myfood.services.GetProduto;
 import myfood.services.ListarProdutos;
 import myfood.services.Login;
+import myfood.services.RemoverProduto;
 
 public class Facade {
     public void zerarSistema() {
@@ -68,6 +74,30 @@ public class Facade {
 
     public String listarProdutos(String empresa) {
         return ListarProdutos.run(empresa);
+    }
+
+    public String criarPedido(String cliente, String empresa) {
+        return CriarPedido.run(cliente, empresa);
+    }
+
+    public void adicionarProduto(String numero, String produto) {
+        AdicionarProduto.run(numero, produto);
+    }
+
+    public String getPedidos(String pedido, String atributo) {
+        return GetPedidos.run(pedido, atributo);
+    }
+
+    public void fecharPedido(String numero) {
+        FecharPedido.run(numero);
+    }
+
+    public void removerProduto(String numero, String produto) {
+        RemoverProduto.run(numero, produto);
+    }
+
+    public String getNumeroPedido(String cliente, String empresa, String indice) {
+        return GetNumeroPedido.run(cliente, empresa, indice);
     }
 }
 

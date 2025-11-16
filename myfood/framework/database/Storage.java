@@ -28,6 +28,21 @@ public class Storage {
         }
     }
 
+    // Deleta um registro específico de uma tabela
+    public void delete(String tableName, String id) {
+        String tablePath = getStoragePath() + tableName + "/";
+        File dir = new File(tablePath);
+        if (!dir.exists() || !dir.isDirectory()) {
+            throw new IllegalArgumentException("Tabela não encontrada: " + tableName);
+        }
+        File recordFile = new File(dir, id + ".properties");
+        if (recordFile.exists()) {
+            recordFile.delete();
+        } else {
+            throw new IllegalArgumentException("Registro não encontrado: " + id);
+        }
+    }
+
     private void deleteDirectory(File dir) {
         File[] files = dir.listFiles();
         if (files != null) {
