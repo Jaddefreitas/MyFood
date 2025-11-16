@@ -96,6 +96,6 @@ public class Storage {
     }
 
     private String getStoragePath() {
-        return Thread.currentThread().getContextClassLoader().getResource("").getPath() + "../" + storageName + "/";
+        return Thread.currentThread().getContextClassLoader().getResource("").getPath() + storageName + "/";
     }
 }

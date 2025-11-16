@@ -1,6 +1,6 @@
 package myfood.services;
 
-import java.util.UUID;
+import com.github.f4b6a3.uuid.UuidCreator;
 
 import myfood.framework.Cpf;
 import myfood.framework.Email;
@@ -75,7 +75,7 @@ public class CriarUsuario {
 
     private static void criarUsuario(String nome, String email, String senha, String endereco, String cpf) {
         Usuario usuario = new Usuario();
-        usuario.setProperty("id", UUID.randomUUID().toString());
+        usuario.setProperty("id", UuidCreator.getTimeOrdered().toString());
         usuario.setProperty("nome", nome);
         usuario.setProperty("email", email);
         usuario.setProperty("senha", senha);

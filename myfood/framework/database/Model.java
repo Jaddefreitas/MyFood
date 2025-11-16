@@ -1,5 +1,7 @@
 package myfood.framework.database;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import myfood.Configuration;
@@ -13,6 +15,10 @@ public abstract class Model<T extends Properties> extends Properties {
 
     // Retorna o nome da tabela associada ao modelo
     public abstract String table();
+
+    public boolean hasProperty(String property) {
+        return this.containsKey(property);
+    }
 
     @SuppressWarnings("unchecked")
     public T fromProperties(Properties props) {
@@ -49,5 +55,16 @@ public abstract class Model<T extends Properties> extends Properties {
             }
         }
         return null;
+    }
+
+    public List<T> getBy(String property, String value) {
+        List<T> results = new ArrayList<>();
+        String tableName = table();
+        for (Properties record : storage.read(tableName)) {
+            if (record.getProperty(property).equals(value)) {
+                results.add(fromProperties(record));
+            }
+        }
+        return results;
     }
 }

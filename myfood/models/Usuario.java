@@ -7,4 +7,9 @@ public class Usuario extends Model<Usuario> {
     public String table() {
         return "usuarios";
     }
+
+    public boolean isDono() {
+        String nome = this.getProperty("nome");
+        return nome != null && nome.endsWith("Dono");
+    }
 }
