@@ -12,6 +12,8 @@ public class Facade {
         database.create();
     }
 
+    public void encerrarSistema() {}
+
     public String getAtributoUsuario(String id, String atributo) {
         return GetAtributoUsuario.run(id, atributo);
     }
