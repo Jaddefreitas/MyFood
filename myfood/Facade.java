@@ -1,24 +1,7 @@
 package myfood;
 
 import myfood.framework.database.Storage;
-import myfood.services.AdicionarProduto;
-import myfood.services.AlterarFuncionamento;
-import myfood.services.CriarEmpresa;
-import myfood.services.CriarPedido;
-import myfood.services.CriarProduto;
-import myfood.services.CriarUsuario;
-import myfood.services.EditarProduto;
-import myfood.services.FecharPedido;
-import myfood.services.GetAtributoEmpresa;
-import myfood.services.GetAtributoUsuario;
-import myfood.services.GetEmpresasDoUsuario;
-import myfood.services.GetIdEmpresa;
-import myfood.services.GetNumeroPedido;
-import myfood.services.GetPedidos;
-import myfood.services.GetProduto;
-import myfood.services.ListarProdutos;
-import myfood.services.Login;
-import myfood.services.RemoverProduto;
+import myfood.services.*;
 
 public class Facade {
     public void zerarSistema() {
@@ -39,6 +22,10 @@ public class Facade {
 
     public void criarUsuario(String nome, String email, String senha, String endereco, String cpf) {
         CriarUsuario.run(nome, email, senha, endereco, cpf);
+    }
+
+    public void criarUsuario(String nome, String email, String senha, String endereco, String veiculo, String placa) {
+        CriarUsuario.run(nome, email, senha, endereco, veiculo, placa);
     }
 
     public String login(String email, String senha) {
@@ -111,6 +98,18 @@ public class Facade {
 
     public void alterarFuncionamento(String mercado, String abre, String fecha) {
         AlterarFuncionamento.run(mercado, abre, fecha);
+    }
+
+    public void cadastrarEntregador(String empresa, String entregador) {
+        CadastrarEntregador.run(empresa, entregador);
+    }
+
+    public String getEntregadores(String empresa) {
+        return GetEntregadores.run(empresa);
+    }
+
+    public String getEmpresas(String entregador) {
+        return GetEmpresas.run(entregador);
     }
 }
 

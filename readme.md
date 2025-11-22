@@ -13,10 +13,3 @@ O sistema consiste de um aplicativo onde seja possível realizar cadatro de empr
     Principais componentes e suas interações:
 
     Componentes - Facade que se comunica com o storage, o database composto por model e storage e o services onde estão a parte de criação, getAtributos, listagem, deleção e login.
-
-    Para cada padrão de projeto adotado no desenvolvimento do sistema, inclua uma seção dedicada com os seguintes tópicos:
-        Nome do Padrão de Projeto:
-        Descrição Geral: Explique o padrão de projeto em termos gerais, focando em sua estrutura e propósito.
-        Problema Resolvido: Descreva o tipo específico de problema que o padrão é destinado a resolver.
-        Identificação da Oportunidade: Explique como e por que a oportunidade de aplicar este padrão foi identificada no contexto do seu projeto.
-        Aplicação no Projeto: Detalhe como o padrão foi implementado no desenvolvimento do sistema, com exemplos práticos de seu uso.

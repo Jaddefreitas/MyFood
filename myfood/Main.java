@@ -17,8 +17,8 @@ public class Main {
         EasyAccept.main(new String[]{facade, "test/milestone2/us5_2.txt"});
         EasyAccept.main(new String[]{facade, "test/milestone2/us6_1.txt"});
         EasyAccept.main(new String[]{facade, "test/milestone2/us6_2.txt"});
-        // EasyAccept.main(new String[]{facade, "test/milestone2/us7_1.txt"});
-        // EasyAccept.main(new String[]{facade, "test/milestone2/us7_2.txt"});
+        EasyAccept.main(new String[]{facade, "test/milestone2/us7_1.txt"});
+        EasyAccept.main(new String[]{facade, "test/milestone2/us7_2.txt"});
         // EasyAccept.main(new String[]{facade, "test/milestone2/us8_1.txt"});
         // EasyAccept.main(new String[]{facade, "test/milestone2/us8_2.txt"});
     }

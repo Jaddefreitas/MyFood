@@ -18,7 +18,7 @@ public class CriarUsuario {
         verificaCadastro(email);
 
         // Cria o usuario sem CPF
-        criarUsuario(nome, email, senha, endereco, null);
+        criarUsuario(nome, email, senha, endereco, null, null, null);
     }
 
     public static void run(String nome, String email, String senha, String endereco, String cpf) {
@@ -33,7 +33,26 @@ public class CriarUsuario {
         verificaCadastro(email);
 
         // Cria o usuario com CPF
-        criarUsuario(nome, email, senha, endereco, cpf);
+        criarUsuario(nome, email, senha, endereco, cpf, null, null);
+    }
+
+    public static void run(String nome, String email, String senha, String endereco, String veiculo, String placa) {
+        // Valida os dados fornecidos
+        validaNome(nome);
+        validaEmail(email);
+        validaSenha(senha);
+        validaEndereco(endereco);
+        validaVeiculo(veiculo);
+        validaPlaca(placa);
+
+        // Verifica se o email ja esta cadastrado
+        Usuario existente = new Usuario().findBy("email", email);
+        if (existente != null) {
+            throw new RuntimeException("Placa invalido");
+        }
+
+        // Cria o usuario com veiculo
+        criarUsuario(nome, email, senha, endereco, null, veiculo, placa);
     }
 
     private static void validaNome(String nome) {
@@ -66,6 +85,18 @@ public class CriarUsuario {
         }
     }
 
+    private static void validaPlaca(String placa) {
+        if (placa == null || placa.isEmpty()) {
+            throw new RuntimeException("Placa invalido");
+        }
+    }
+
+    private static void validaVeiculo(String veiculo) {
+        if (veiculo == null || veiculo.isEmpty()) {
+            throw new RuntimeException("Veiculo invalido");
+        }
+    }
+
     private static void verificaCadastro(String email) {
         Usuario existente = new Usuario().findBy("email", email);
         if (existente != null) {
@@ -73,7 +104,7 @@ public class CriarUsuario {
         }
     }
 
-    private static void criarUsuario(String nome, String email, String senha, String endereco, String cpf) {
+    private static void criarUsuario(String nome, String email, String senha, String endereco, String cpf, String veiculo, String placa) {
         Usuario usuario = new Usuario();
         usuario.setProperty("id", UuidCreator.getTimeOrdered().toString());
         usuario.setProperty("nome", nome);
@@ -82,6 +113,12 @@ public class CriarUsuario {
         usuario.setProperty("endereco", endereco);
         if (cpf != null) {
             usuario.setProperty("cpf", cpf);
+        }
+        if (veiculo != null) {
+            usuario.setProperty("veiculo", veiculo);
+        }
+        if (placa != null) {
+            usuario.setProperty("placa", placa);
         }
         usuario.save();
     }

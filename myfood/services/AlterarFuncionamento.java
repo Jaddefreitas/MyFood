@@ -1,12 +1,12 @@
 package myfood.services;
 
-import myfood.framework.Data;
+import myfood.framework.Horario;
 import myfood.models.Empresa;
 
 public class AlterarFuncionamento {
     public static void run (String mercado, String abre, String fecha) {
         // Verifica se o horário de abertura e fechamento são válidos
-        Data.isValid(abre, fecha);
+        Horario.isValid(abre, fecha);
 
         // Verifica se o mercado existe
         Empresa mercadoObj = new Empresa().find(mercado);

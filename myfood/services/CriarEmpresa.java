@@ -3,7 +3,7 @@ package myfood.services;
 import java.util.List;
 import com.github.f4b6a3.uuid.UuidCreator;
 
-import myfood.framework.Data;
+import myfood.framework.Horario;
 import myfood.models.Empresa;
 import myfood.models.Usuario;
 
@@ -23,7 +23,7 @@ public class CriarEmpresa {
         validaNome(nome);
         validaEndereco(endereco);
         validaTipoMercado(tipoMercado);
-        Data.isValid(abre, fecha);
+        Horario.isValid(abre, fecha);
         validaEmpresaExistente(nome, dono, endereco);
         validaIsDono(dono);
 

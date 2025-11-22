@@ -1,6 +1,6 @@
 package myfood.framework;
 
-public class Data {
+public class Horario {
     public static void isValid(String abre, String fecha) {
         // Verifica se o horário de abertura e fechamento são válidos
         if (abre == null || fecha == null) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.f4b6a3.uuid.UuidCreator;
 
+import myfood.exceptions.PedidoNotFoundException;
 import myfood.models.Empresa;
 import myfood.models.Pedido;
 import myfood.models.Produto;
@@ -14,7 +15,7 @@ public class AdicionarProduto {
         // Verifica se o pedido existe
         Pedido pedido = new Pedido().findBy("numero", numero);
         if (pedido == null) {
-            throw new RuntimeException("Nao existe pedido em aberto");
+            throw new PedidoNotFoundException();
         }
 
         // Verifica se o pedido está em estado "preparando"
