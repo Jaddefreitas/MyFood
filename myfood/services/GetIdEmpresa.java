@@ -10,6 +10,11 @@ public class GetIdEmpresa {
             throw new RuntimeException("Nome invalido");
         }
 
+        int idx = Integer.parseInt(indice);
+        if (idx < 0) {
+            throw new RuntimeException("Indice invalido");
+        }
+
         List<Empresa> empresas = new Empresa().getBy("dono", idDono);
         List<Empresa> empresasFiltradas = empresas.stream()
                 .filter(e -> e.getProperty("nome").toString().equals(nomeEmpresa))
@@ -17,12 +22,6 @@ public class GetIdEmpresa {
 
         if (empresasFiltradas.size() == 0) {
             throw new RuntimeException("Nao existe empresa com esse nome");
-        }
-
-        int idx = Integer.parseInt(indice);
-
-        if (idx < 0) {
-            throw new RuntimeException("Indice invalido");
         }
 
         if (idx > empresasFiltradas.size() - 1) {
