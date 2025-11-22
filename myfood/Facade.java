@@ -53,6 +53,10 @@ public class Facade {
         return CriarEmpresa.run(tipoEmpresa, dono, nome, endereco, abre, fecha, tipoMercado);
     }
 
+    public String criarEmpresa(String tipoEmpresa, String dono, String nome, String endereco, String aberto24Horas, String numeroFuncionarios) {
+        return CriarEmpresa.run(tipoEmpresa, dono, nome, endereco, aberto24Horas, numeroFuncionarios);
+    }
+
     public String getEmpresasDoUsuario(String idUsuario) {
         return GetEmpresasDoUsuario.run(idUsuario);
     }
